@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style-catalogo.css">
+    <title>Catálogo | Automarket</title>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/carrinho.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../imgs/logo-automarket.png" alt="Logo AutoMarket">
+            <h1>AutoMarket</h1>
+        </div>
+
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <nav class="nav-header">
+            <ul>
+                <li><a href="../pages/index.html">Home</a></li>
+                <li><a href="../pages/catalogo.html">Catálogo</a></li>
+                <li><a href="../pages/vendedores.html">Vendedores</a></li>
+                <li><a href="../pages/faq.html">FAQ</a></li>
+                <li><a href="../pages/contato.html">Contato</a></li>
+                <li><a href="../pages/cadastro.html" id="header-btn-cadastro">Cadastrar</a></li>
+                <li><a a href="#" id="open-cart-button">Carrinho</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+        <h1>Catálogo</h1>
+
+        <section>
+            <div class="container">
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car1.jpg" alt="Car 1" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>Lamborghini Urus 2023</h2>
+                        <p>Marca: Lamborghini</p>
+                        <p class="price">R$4.095.000,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car2.jpg" alt="Car 2" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>McLaren Artura</h2>
+                        <p>Marca: McLaren</p>
+                        <p class="price">R$3.800.000,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car3.jpg" alt="Car 3" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>Porsche Macan 2023</h2>
+                        <p>Marca: Porsche</p>
+                        <p class="price">R$680.000,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car4.jpg" alt="Car 4" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>Porsche 911 Carrera GTS</h2>
+                        <p>Marca: Porsche</p>
+                        <p class="price">R$989.000,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car5.jpg" alt="Car 5" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>Porsche 918 Spyder</h2>
+                        <p>Marca: Porsche</p>
+                        <p class="price">R$14.400.000,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="../imgs/car6.jpg" alt="Car 6" id="cart">
+                    </div>
+                    <div class="car-info">
+                        <h2>BMW i8 Roadster</h2>
+                        <p>Marca: BMW</p>
+                        <p class="price">R$710.950,00</p>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="cart-container">
+            <div class="cart">
+                <span id="close-cart-button">X</span>
+                <h2>Carrinho de Compras</h2>
+                <ul id="cart-items">
+
+                </ul>
+                <div id="total-container">
+                    <h3>Total: <span id="cart-total">R$0.00</span></h3>
+                </div>
+        
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><b>&copy; 1995 - 2023 AutoMarket S.A. Todos os direitos reservados.</b></p>
+    </footer>
+</body>
+
+</html>
