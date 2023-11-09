@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+
+[data-theme="dark"]{
+
+
+  --primary-color:#5effac;
+  --secondary-color:#fcff67;
+  --error-color: #d45059;
+
+  --background: #121212;
+  --background-surface: #1f1f1f;
+
+  --main-oposite: #ffffff;
+
+  --text: #ffffff;
+
+  --main-gradient: linear-gradient(90deg, rgba(94,255,172,1) 0%, rgba(252,255,103,1) 100%);
+
+}
+
+[data-theme="light"]{
+
+  --primary-color:#5effac;
+  --secondary-color:#fcff67;
+  --error-color: #d45059;
+
+  --background: #e6e6e6;
+  --background-surface: #ffffff;
+
+  --text: #000;
+
+  --main-oposite: #121212;
+
+  --main-gradient: linear-gradient(90deg, rgb(0, 255, 123) 0%, rgba(252,255,103,1) 100%);
+}
+
+
+
+body{
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: .4s;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 20px;
+  background-color: var(--background-surface);
+  box-shadow: 10px 0px 10px var(--background);
+}
+
+header h1{
+  border-bottom: 4px solid;
+  border-image-slice: 1;
+  border-image-source: var(--main-gradient);
+  padding-bottom: 5px;
+}
+
+#todays-matches-title{
+  font-size: 30px;
+  margin: 20px;
+}
+
+.todays-matches{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div-match{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 60px);
+  margin: 20px 30px;
+  background-color: var(--background-surface);
+  border-radius: 10px;
+  box-shadow: 10px 0px 10px var(--background);
+  text-align: center;
+}
+
+.div-match div{
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.div-match img{
+  width: 30px;
+}
+
+#main-leagues-title{
+  font-size: 30px;
+  margin: 20px;
+}
+
+.main-leagues{
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.div-leagues{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: var(--text);
+  width: calc(100% - 45px);
+  height: 250px;
+  padding: 20px;
+  background-color: var(--background-surface);
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: 0.4s;
+}
+
+.div-leagues img{
+  width: 6em;
+  filter: drop-shadow(0px 0px 5px rgba( 255, 255, 255, 0.1));
+}
+
+.div-leagues h3{
+  font-size: 22px;
+}
+
+.div-leagues p{
+  font-size: 18px;
+}
+
+
+.div-leagues:hover{
+  cursor: pointer;
+  box-shadow: inset 0 0 300px 250px rgba(255, 255, 255, 0.2);
+}
+
+
+@media (max-width: 1000px) {
+  .main-leagues{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media (max-width: 700px) {
+header{
+  flex-direction: column;
+  gap: 10px;
+}
+  
+.main-leagues{
+  grid-template-columns: 1fr;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- CSS botão de trocar tema ---------- */
+
+.checkbox-wrapper-14{
+  font-weight: 700;
+  display: flex;
+  gap: 20px;
+}
+
+.checkbox-wrapper-14 * {
+  box-sizing: inherit;
+}
+.checkbox-wrapper-14 *:before,
+.checkbox-wrapper-14 *:after {
+  box-sizing: inherit;
+}
+
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  .checkbox-wrapper-14 input[type="checkbox"] {
+    --active: var(--main-gradient);
+    --active-inner: var(--background-surface);
+    --border: var(--main-oposite);
+    --border-hover: var(--primary-color);
+    --background: #fff;
+    --disabled: var(--main-dark);
+    --disabled-inner: var(--main-dark);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    background: var(--b, var(--background));
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+      opacity var(--d-o, 0.2s);
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:checked {
+    --b: var(--active);
+    --bc: var(--active);
+    --d-o: 0.3s;
+    --d-t: 0.6s;
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:disabled + label {
+    cursor: not-allowed;
+  }
+  .checkbox-wrapper-14
+    input[type="checkbox"]:hover:not(:checked):not(:disabled) {
+    --bc: var(--border-hover);
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch) {
+    width: 21px;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch):after {
+    opacity: var(--o, 0);
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch):checked {
+    --o: 1;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"] + label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch) {
+    border-radius: 7px;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch):after {
+    width: 5px;
+    height: 9px;
+    border: 2px solid var(--active-inner);
+    border-top: 0;
+    border-left: 0;
+    left: 7px;
+    top: 4px;
+    transform: rotate(var(--r, 20deg));
+  }
+  .checkbox-wrapper-14 input[type="checkbox"]:not(.switch):checked {
+    --r: 43deg;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"].switch {
+    width: 38px;
+    border-radius: 11px;
+  }
+  .checkbox-wrapper-14 input[type="checkbox"].switch:after {
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    background: var(--ab, var(--border));
+    transform: translateX(var(--x, 0));
+  }
+  .checkbox-wrapper-14 input[type="checkbox"].switch:checked {
+    --ab: var(--active-inner);
+    --x: 17px;
+  }
+  .checkbox-wrapper-14
+    input[type="checkbox"].switch:disabled:not(:checked):after {
+    opacity: 0.6;
+  }
+}
