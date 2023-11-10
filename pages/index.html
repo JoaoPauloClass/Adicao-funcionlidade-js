@@ -1,7 +1,7 @@
 <!--
 -fazer as partidas diárias
--arrumar design
-
+-organizar o codigo
+-em caso se erro fazer os cards
 -->
 
 <!DOCTYPE html>
@@ -12,9 +12,10 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
-  <title>Frontend Mentor | [Challenge Name Here]</title>
+  <title>Dashboard Futebol Brasileiro</title>
 
   <link rel="stylesheet" href="../styles/index.css">
+  
 
 
 </head>
@@ -31,9 +32,14 @@
     </div>
   </header>
 
-  <section>
-    <h2 id="todays-matches-title">Partidas de hoje</h2>
-    <div class="today-matches">
+  <section id="today-matches-section">
+    <div id="todays-matches-header">
+      <h2 id="todays-matches-title">Partidas de hoje</h2>
+      <button class="todays-matches-btn" onclick="filterMatches('live')">Ao vivo</button>
+      <button class="todays-matches-btn" onclick="filterMatches('today')">Hoje</button>
+      <button class="todays-matches-btn" onclick="filterMatches('all')">Todos</button>
+    </div>
+    <div class="today-matches-div">
 
       <div class="div-match">
        <div>
