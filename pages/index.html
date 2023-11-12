@@ -1,7 +1,5 @@
 <!--
--fazer as partidas diárias
--organizar o codigo
--em caso se erro fazer os cards
+-fazer os campeonatos finalizados em até 6 meses
 -->
 
 <!DOCTYPE html>
@@ -23,7 +21,7 @@
 <main>
 
   <header>
-      <h1>Futebol Brasileiro Dashboard</h1>
+      <h1>Futebol Dashboard</h1>
       <p></p>
     </div>
     <div class="checkbox-wrapper-14">
@@ -32,39 +30,20 @@
     </div>
   </header>
 
-  <section id="today-matches-section">
-    <div id="todays-matches-header">
-      <h2 id="todays-matches-title">Partidas de hoje</h2>
-      <button class="todays-matches-btn" onclick="filterMatches('live')">Ao vivo</button>
-      <button class="todays-matches-btn" onclick="filterMatches('today')">Hoje</button>
-      <button class="todays-matches-btn" onclick="filterMatches('all')">Todos</button>
-    </div>
-    <div class="today-matches-div">
-
-      <div class="div-match">
-       <div>
-          <img src="https://cdn.api-futebol.com.br/escudos/638d34a851005.svg" alt="logo time mandante">
-          <p>River-PI</p>
-
-          <span>X</span>
-
-          <p>Bahia</p>
-          <img src="https://cdn.api-futebol.com.br/escudos/638d34a8b6bd8.svg" alt="logo time visitante">
-       </div>
-        <p>05/02/2020</p>
-        <p>Finalizado</p>
-
-      </div>
-
-    </div>
-  </section>
-
+  <dialog>
+    <h2>Aviso</h2>
+    <p>A API usada é do plano gratuito, então usar a chave principal pode acarretar na perda de funcionlidades</p>
+    <button>Usar chave de teste</button>
+    <button>Usar chave principal</button>
+    <p>(recomendado)</p>
+  </dialog>
 
   <section>
-    <h1 id="main-leagues-title">Campeonatos nacionais em andamento</h1>
+    <h1 class="leagues-title">Campeonatos em andamento</h1>
     <div class="main-leagues">
       
     </div>
+    <h1 class="leagues-title">Campeonatos finalizados</h1>
   </section>
 
 </main>
