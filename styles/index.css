@@ -1,17 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
 
-
-[data-theme="dark"]{
-
-
-  --primary-color:#5effac;
-  --secondary-color:#fcff67;
+[data-theme="dark"] {
+  --primary-color: #5effac;
+  --secondary-color: #fcff67;
   --error-color: #610000;
   --error-text-color: #fff;
 
@@ -22,14 +19,16 @@
 
   --text: #ffffff;
 
-  --main-gradient: linear-gradient(90deg, rgba(94,255,172,1) 0%, rgba(252,255,103,1) 100%);
-
+  --main-gradient: linear-gradient(
+    90deg,
+    rgba(94, 255, 172, 1) 0%,
+    rgba(252, 255, 103, 1) 100%
+  );
 }
 
-[data-theme="light"]{
-
-  --primary-color:#5effac;
-  --secondary-color:#fcff67;
+[data-theme="light"] {
+  --primary-color: #5effac;
+  --secondary-color: #fcff67;
   --error-color: #ff0000;
   --error-text-color: #fff;
 
@@ -40,65 +39,44 @@
 
   --main-oposite: #121212;
 
-  --main-gradient: linear-gradient(90deg, rgb(0, 255, 123) 0%, rgba(252,255,103,1) 100%);
+  --main-gradient: linear-gradient(
+    90deg,
+    rgb(0, 255, 123) 0%,
+    rgba(252, 255, 103, 1) 100%
+  );
 }
 
-
-
-body{
-  font-family: 'Inter', sans-serif;
+body {
+  font-family: "Inter", sans-serif;
   background-color: var(--background);
   color: var(--text);
-  transition: .4s;
+  transition: 0.4s;
 }
 
-header{
+header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   padding: 30px 20px;
   background-color: var(--background-surface);
   box-shadow: 10px 0px 10px var(--background);
-  transition: .4s;
+  transition: 0.4s;
 }
 
-header h1{
+header h1 {
   border-bottom: 4px solid;
   border-image-slice: 1;
   border-image-source: var(--main-gradient);
   padding-bottom: 5px;
 }
 
-.div-match{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc(100% - 60px);
-  margin: 20px 30px;
-  background-color: var(--background-surface);
-  border-radius: 10px;
-  box-shadow: 10px 0px 10px var(--background);
-  text-align: center;
-  transition: .4s;
-}
-
-.div-match div{
-  display: flex;
-  align-items: center;
-  gap: 10px
-}
-
-.div-match img{
-  width: 30px;
-}
-
-.leagues-title{
+.leagues-title {
   font-size: 30px;
   margin: 20px;
-  transition: .4s;
+  transition: 0.4s;
 }
 
-.main-leagues{
+.main-leagues {
   margin: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -108,7 +86,7 @@ header h1{
   border-bottom: 1px solid var(--background-surface);
 }
 
-.div-leagues{
+.div-leagues {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,27 +103,35 @@ header h1{
   transition: 0.4s;
 }
 
-.div-leagues img{
+.div-leagues img {
   width: 6em;
-  filter: drop-shadow(0px 0px 5px rgba( 255, 255, 255, 0.1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.1));
 }
 
-.div-leagues h3{
+.div-leagues h3 {
   font-size: 22px;
 }
 
-.div-leagues p{
+.div-leagues p {
   font-size: 18px;
 }
 
-
-.div-leagues:hover{
+.div-leagues:hover {
   cursor: pointer;
   box-shadow: inset 0 0 300px 250px rgba(255, 255, 255, 0.2);
 }
 
+.past-leagues {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+  row-gap: 5px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--background-surface);
+}
 
-.error-league{
+.error-league {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,67 +148,45 @@ header h1{
   transition: 0.4s;
 }
 
-.error-league img{
+.error-league img {
   width: 10em;
-  filter: drop-shadow(0px 0px 5px rgba( 255, 255, 255, 0.1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.1));
 }
 
-.error-league p{
+.error-league p {
   font-size: 25px;
 }
 
-
 @media (max-width: 1000px) {
-  .main-leagues{
+  .main-leagues {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .past-leagues {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-
 @media (max-width: 700px) {
-header{
-  flex-direction: column;
-  gap: 10px;
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .main-leagues {
+    grid-template-columns: 1fr;
+    gap: 15px 0px;
+  }
+
+  .past-leagues {
+    grid-template-columns: 1fr;
+    gap: 15px 0px;
+  }
 }
-  
-.main-leagues{
-  grid-template-columns: 1fr;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ---------- CSS botão de trocar tema ---------- */
 
-.checkbox-wrapper-14{
+.checkbox-wrapper-14 {
   font-weight: 700;
   display: flex;
   gap: 20px;
@@ -235,7 +199,6 @@ header{
 .checkbox-wrapper-14 *:after {
   box-sizing: inherit;
 }
-
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   .checkbox-wrapper-14 input[type="checkbox"] {

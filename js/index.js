@@ -1,33 +1,33 @@
 const testAPIkey = "test_2f391f89e479a44134ad08f1357035";
 const prodAPIkey = "live_dab12fa5cbc0a77918ce519f226975";
-const APIkey = testAPIkey;
-
+const APIkey = prodAPIkey;
 
 function createErrorCard() {
-
-    //pegar a div principal dos campeonatos
-    const mainLeagues = document.querySelector(".main-leagues");
-
-    let errorLeague = document.createElement(`div`); //criar div para colocar o campeonato
-    errorLeague.classList.add("error-league");
-
-    const errorImg = document.createElement("img")
-    const errorMsg = document.createElement("p")
-
-    errorImg.src = '../imgs/x.png'
-    errorImg.alt = "Icone de erro"
-    errorMsg.textContent = "Não foi possível carregar os campeonatos"
-
-    errorLeague.appendChild(errorImg)
-    errorLeague.appendChild(errorMsg)
-
-    mainLeagues.appendChild(errorLeague)
-}
-
-
-function createLeagueCard(element) {
   //pegar a div principal dos campeonatos
   const mainLeagues = document.querySelector(".main-leagues");
+
+  let errorLeague = document.createElement(`div`); //criar div para colocar o campeonato
+  errorLeague.classList.add("error-league");
+
+  const errorImg = document.createElement("img");
+  const errorMsg = document.createElement("p");
+
+  errorImg.src = "../imgs/x.png";
+  errorImg.alt = "Icone de erro";
+  errorMsg.textContent = "Não foi possível carregar os campeonatos";
+
+  errorLeague.appendChild(errorImg);
+  errorLeague.appendChild(errorMsg);
+
+  mainLeagues.appendChild(errorLeague);
+}
+
+function createLeagueCard(element) {
+  //pegar a div principal dos campeonatos em andamento
+  const mainLeagues = document.querySelector(".main-leagues");
+
+  //pegar a div principal dos campeoantos que acabaram
+  const pastLeagues = document.querySelector(".past-leagues");
 
   let league = document.createElement(`div`); //criar div para colocar o campeonato
   league.classList.add("div-leagues");
@@ -41,14 +41,22 @@ function createLeagueCard(element) {
   const leagueRound = document.createElement("p");
 
   //atribuir o conteudo os elementos
-  leagueLogo.src = element.logo;
-  leagueLogo.alt = "Logo do campeonato";
-  leagueName.textContent = element.nome;
-  leagueYear.textContent = element.edicao_atual.temporada;
-  leaguePhase.textContent = element.fase_atual.nome;
-  leagueRound.textContent = element.rodada_atual
-    ? element.rodada_atual.nome
-    : null;
+  if (element.status != "finalizado") {
+    leagueLogo.src = element.logo;
+    leagueLogo.alt = "Logo do campeonato";
+    leagueName.textContent = element.nome;
+    leagueYear.textContent = element.edicao_atual.temporada;
+    leaguePhase.textContent = element.fase_atual.nome;
+    leagueRound.textContent = element.rodada_atual
+      ? element.rodada_atual.nome
+      : null;
+  } else if (element.status === "finalizado") {
+    leagueLogo.src = element.logo;
+    leagueLogo.alt = "Logo do campeonato";
+    leagueName.textContent = element.nome;
+    leagueYear.textContent = element.edicao_atual.temporada;
+    leaguePhase.textContent = "Finalizado";
+  }
 
   //colocar os elementos na div
   league.appendChild(leagueLogo);
@@ -61,28 +69,24 @@ function createLeagueCard(element) {
     league.appendChild(leagueRound);
   }
 
-  //colocar a div na div principal com os campeonatos
-  mainLeagues.appendChild(league);
+  if (element.status != "finalizado") {
+    mainLeagues.appendChild(league);
+  } else if (element.status === "finalizado") {
+    //informar ao usuario que está finalizado
+    //colocar a div na div principal com os campeonatos
+    pastLeagues.appendChild(league);
+  }
 }
 
-
 function createCards(campeonatos) {
-
-  //verificar quais campeonatos estão ocorrendo
+  //para cada campeonato criar seu cartão
   campeonatos.forEach((element) => {
-    if (element.status != "finalizado") {
-      createLeagueCard(element); // criar cartão de campeonato
-    }
+    createLeagueCard(element); // criar cartão de campeonato
   });
 }
 
 // ------------------- MAIN -------------------
 document.addEventListener("DOMContentLoaded", () => {
-
-  const modal = document.querySelector('dialog')
-
-  modal.showModal()
-
   //consumir API
   fetch("https://api.api-futebol.com.br/v1/campeonatos", {
     method: "GET",
@@ -90,18 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
       Authorization: `Bearer ${APIkey}`, //passar na autenticação da API
     },
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json()
-    })
+    .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const campeonatos = data;
-      createCards(campeonatos)
+      createCards(campeonatos);
     })
-    .catch(error => {
-      createErrorCard('league')
+    .catch((error) => {
+      createErrorCard("league");
     });
 });
 
