@@ -1,6 +1,7 @@
-const testAPIkey = "test_2f391f89e479a44134ad08f1357035";
+const testAPIkey = "test_be09740a7b129c3d865e6677c90675";
 const prodAPIkey = "live_dab12fa5cbc0a77918ce519f226975";
-const APIkey = prodAPIkey;
+const APIkey = testAPIkey;
+//não usar produção pois a API se tornou paga.
 
 function createErrorCard() {
   //pegar a div principal dos campeonatos
