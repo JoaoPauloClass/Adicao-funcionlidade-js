@@ -1,27 +1,36 @@
-const testAPIkey = "#";
-const prodAPIkey = "#";
-const APIkey = testAPIkey;
+# Contexto:
+Esté projeto é um dashboard que contém informações sobre as competições de futebol que estão acontecendo, aconteram e irão acontecer. As informações são requisitadas de uma API privada.
 
-function createErrorCard() {
-  //pegar a div principal dos campeonatos
-  const mainLeagues = document.querySelector(".main-leagues");
+# Configuração:
+O site foi construido utilizando HTML,CSS e Javascript sem nenhum framework adicional.
 
-  let errorLeague = document.createElement(`div`); //criar div para colocar o campeonato
-  errorLeague.classList.add("error-league");
+# Funcionamento:
+A requisição é feita da seguinte forma:
 
-  const errorImg = document.createElement("img");
-  const errorMsg = document.createElement("p");
+```
+    document.addEventListener("DOMContentLoaded", () => {
+    //consumir API
+    fetch("https://api.api-futebol.com.br/v1/campeonatos", {
+        method: "GET",
+        headers: {
+        Authorization: `Bearer ${APIkey}`, //passar na autenticação da API
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log(data);
+        const campeonatos = data;
+        createCards(campeonatos);
+        })
+        .catch((error) => {
+        createErrorCard("league");
+        });
+    });
+```
 
-  errorImg.src = "../imgs/x.png";
-  errorImg.alt = "Icone de erro";
-  errorMsg.textContent = "Não foi possível carregar os campeonatos";
+Os campeonatos são gerados com cards: 
 
-  errorLeague.appendChild(errorImg);
-  errorLeague.appendChild(errorMsg);
-
-  mainLeagues.appendChild(errorLeague);
-}
-
+```
 function createLeagueCard(element) {
   //pegar a div principal dos campeonatos em andamento
   const mainLeagues = document.querySelector(".main-leagues");
@@ -85,27 +94,38 @@ function createCards(campeonatos) {
   });
 }
 
-// ------------------- MAIN -------------------
-document.addEventListener("DOMContentLoaded", () => {
-  //consumir API
-  fetch("https://api.api-futebol.com.br/v1/campeonatos", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${APIkey}`, //passar na autenticação da API
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      const campeonatos = data;
-      createCards(campeonatos);
-    })
-    .catch((error) => {
-      createErrorCard("league");
-    });
-});
+```
 
-// ---------------------------- TEMA ----------------------------
+
+Caso haja um erro na requisisão, um card de erro é gerado:
+
+```
+function createErrorCard() {
+  //pegar a div principal dos campeonatos
+  const mainLeagues = document.querySelector(".main-leagues");
+
+  let errorLeague = document.createElement(`div`); //criar div para colocar o campeonato
+  errorLeague.classList.add("error-league");
+
+  const errorImg = document.createElement("img");
+  const errorMsg = document.createElement("p");
+
+  errorImg.src = "../imgs/x.png";
+  errorImg.alt = "Icone de erro";
+  errorMsg.textContent = "Não foi possível carregar os campeonatos";
+
+  errorLeague.appendChild(errorImg);
+  errorLeague.appendChild(errorMsg);
+
+  mainLeagues.appendChild(errorLeague);
+}
+
+```
+
+
+O dashboard também conta com uma funcionalidade de tema escuro e claro que é salvo na memória local do usuário:
+
+```
 
 //pegar o botao de trocar tema
 const themeSwitch = document.querySelector(
@@ -142,3 +162,5 @@ const changeTheme = (element) => {
 
 //quando o botao sofrer alguma mudança, ele troca o tema
 themeSwitch.addEventListener("change", changeTheme);
+
+```
